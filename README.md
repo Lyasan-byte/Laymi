@@ -42,8 +42,8 @@ The journal provides thoughtful prompts for anxiety, loneliness, gratitude, self
 
 <p align="center">
   <img src="screenshots/journal.png" width="220" /> &nbsp;
-  <img src="screenshots/new-entry.png" width="220" /><br>
   <img src="screenshots/saved-entry.png" width="220" /> &nbsp;
+  <img src="screenshots/new-entry.png" width="220" />
 </p>
 
 ### User Profile
@@ -60,8 +60,8 @@ Laymi supports Dark Mode across the app, preserving its calm visual style and ke
 
 <p align="center">
   <img src="screenshots/home-dark.png" width="220" /> &nbsp;
-  <img src="screenshots/breathing-dark.png" width="220" /><br>
-  <img src="screenshots/article-dark.png" width="220" /> &nbsp;
+  <img src="screenshots/breathing-dark.png" width="220" /> &nbsp;
+  <img src="screenshots/article-dark.png" width="220" /> 
 </p>
 ## Architecture
 
