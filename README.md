@@ -96,7 +96,7 @@ Key architectural decisions:
   - Health cards are implemented in UIKit and embedded in SwiftUI with `UIViewRepresentable`.
   - Article details are presented through a UIKit `UIViewController`, which hosts a SwiftUI article view using `UIHostingController`.
 
-## 💡Technologies
+## 🛠️ Technologies
 
 - Swift
 - SwiftUI
@@ -107,7 +107,7 @@ Key architectural decisions:
 - HealthKit
 - Firebase Authentication
 - Google Sign-In
-- Firebase AI Logic with Gemini
+- Firebase AI SDK with Gemini
 - Lottie animations
 - Swift Testing
 - Swift Package Manager
@@ -208,4 +208,4 @@ The project uses LLM tools in two ways:
 
 ### Development Assistance
 
-- **OpenAI Codex** was used as a development assistant for implementation support, debugging, test scaffolding, and documentation refinement.
+- **OpenAI ChatGPT** was used as a development assistant for implementation support, debugging, test scaffolding, and documentation refinement.
