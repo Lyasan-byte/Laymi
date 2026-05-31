@@ -4,6 +4,15 @@ Laymi is an iOS mental wellness companion designed to make everyday self-care fe
 
 ## Features
 
+### Authentication
+
+Users can sign in securely with Firebase Authentication and Google Sign-In before entering the main app flow.
+
+<p align="center">
+  <img src="screenshots/login.png" width="220" /> &nbsp;
+  <img src="screenshots/sign-up.png" width="220" /> &nbsp;
+</p>
+
 ### A Personal Home Screen
 
 The home screen brings together a daily reflection and simple wellbeing signals. With HealthKit permission, users can view their step count and most recent heart rate, then open short educational articles that connect physical signals with mental wellbeing.
