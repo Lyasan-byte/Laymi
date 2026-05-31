@@ -8,40 +8,61 @@ Laymi is an iOS mental wellness companion designed to make everyday self-care fe
 
 The home screen brings together a daily reflection and simple wellbeing signals. With HealthKit permission, users can view their step count and most recent heart rate, then open short educational articles that connect physical signals with mental wellbeing.
 
-![Laymi home screen](screenshots/home.png)
+<p align="center">
+  <img src="screenshots/home.png" width="260" />
+</p>
 
 ### Supportive AI Chat
 
 Laymi includes a streaming AI chat powered by Gemini through Firebase AI. Responses appear progressively, so the conversation feels immediate rather than static. The assistant is guided by a wellbeing-focused system prompt with clear safety boundaries for crisis situations, self-harm, harm to others, and prompt injection attempts.
 
-![Laymi AI chat](screenshots/chat.png)
+<p align="center">
+  <img src="screenshots/chat.mov" width="260" />
+</p>
 
 ### Mindful Breathing
 
 The breathing exercise offers a three-minute guided practice with visual rhythm, phase instructions, a timer, pause and reset controls, and a completion state.
 
-![Laymi breathing exercise](screenshots/breathing.png)
+<p align="center">
+  <img src="screenshots/breathing.mov" width="260" />
+</p>
 
 ### Reflective Quotes
 
 Users can browse a paged collection of supportive quotes. Quotes are cached locally with SwiftData to reduce unnecessary network requests and provide a smoother experience.
 
-![Laymi reflective quotes](screenshots/quotes.png)
+<p align="center">
+  <img src="screenshots/quotes.mov" width="260" />
+</p>
 
 ### Guided Journal
 
 The journal provides thoughtful prompts for anxiety, loneliness, gratitude, self-compassion, and small wins. Users can create, review, and delete entries while keeping their reflections stored locally on the device.
 
-![Laymi journal prompts](screenshots/journal-prompts.png)
-
-![Laymi journal entries](screenshots/journal-entries.png)
+<p align="center">
+  <img src="screenshots/journal.png" width="220" /> &nbsp;
+  <img src="screenshots/new-entry.png" width="220" /><br>
+  <img src="screenshots/saved-entry.png" width="220" /> &nbsp;
+</p>
 
 ### User Profile
 
 Users can sign in, maintain a personal profile, and update details such as name, birthday, gender, and profile image.
 
-![Laymi profile](screenshots/profile.png)
+<p align="center">
+  <img src="screenshots/profile.png" width="260" />
+</p>
 
+### Dark Mode
+
+Laymi supports Dark Mode across the app, preserving its calm visual style and keeping each screen comfortable to use in low-light environments.
+
+<p align="center">
+  <img src="screenshots/home-dark.png" width="220" /> &nbsp;
+  <img src="screenshots/breathing-dark.png" width="220" /><br>
+  <img src="screenshots/article-dark.png" width="220" /> &nbsp;
+</p>
 ## Architecture
 
 Laymi follows an MVVM-oriented, feature-based structure:
@@ -103,7 +124,7 @@ Key architectural decisions:
 ### 1. Clone The Repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone [Laymi](https://github.com/Lyasan-byte/Laymi.git)
 cd Laymi
 ```
 
