@@ -96,7 +96,7 @@ Key architectural decisions:
   - Health cards are implemented in UIKit and embedded in SwiftUI with `UIViewRepresentable`.
   - Article details are presented through a UIKit `UIViewController`, which hosts a SwiftUI article view using `UIHostingController`.
 
-## Technologies
+## 💡Technologies
 
 - Swift
 - SwiftUI
@@ -112,7 +112,7 @@ Key architectural decisions:
 - Swift Testing
 - Swift Package Manager
 
-## Getting Started
+## 🫟 Getting Started
 
 ### Requirements
 
@@ -124,7 +124,7 @@ Key architectural decisions:
 ### 1. Clone The Repository
 
 ```bash
-git clone [Laymi](https://github.com/Lyasan-byte/Laymi.git)
+git clone https://github.com/Lyasan-byte/Laymi.git
 cd Laymi
 ```
 
