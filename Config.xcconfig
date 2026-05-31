@@ -1,0 +1,9 @@
+//
+//  Config.xcconfig
+//  Laymi
+//
+
+API_NINJAS_QUOTE_OF_THE_DAY_URL =
+API_NINJAS_QUOTES_URL =
+
+#include? "Secrets.xcconfig"
