@@ -63,6 +63,7 @@ Laymi supports Dark Mode across the app, preserving its calm visual style and ke
   <img src="screenshots/breathing-dark.png" width="220" /> &nbsp;
   <img src="screenshots/article-dark.png" width="220" /> 
 </p>
+
 ## Architecture
 
 Laymi follows an MVVM-oriented, feature-based structure:
