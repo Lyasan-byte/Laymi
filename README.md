@@ -46,9 +46,6 @@ Laymi includes a streaming AI chat powered by Gemini through Firebase AI. Respon
   </video>
 </div>
 
-
-
-
 ### Mindful Breathing
 
 The breathing exercise offers a three-minute guided practice with visual rhythm, phase instructions, a timer, pause and reset controls, and a completion state.
@@ -80,9 +77,7 @@ The journal provides thoughtful prompts for anxiety, loneliness, gratitude, self
 Users can sign in, maintain a personal profile, and update details such as name, birthday, gender, and profile image.
 
 <p align="center">
-  <img src="screenshots/profile-birthday.png" width="260" />
   <img src="screenshots/profile.png" width="260" />
-  <img src="screenshots/profile-photo.png" width="260" />
 </p>
 
 ### Dark Mode
