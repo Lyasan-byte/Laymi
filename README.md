@@ -4,7 +4,7 @@
     width="42"
     height="42"
     alt="Laymi app icon"
-    style="vertical-align: center;"
+    align="absmiddle"
   />
   Laymi
 </h1>
