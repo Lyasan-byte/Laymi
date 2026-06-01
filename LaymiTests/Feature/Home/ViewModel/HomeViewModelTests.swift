@@ -22,7 +22,6 @@ struct HomeViewModelTests {
             quoteStorage: quoteStorage
         )
         
-        UserDefaults.standard.removeObject(forKey: "hasRequestedHealthAccess")
         await viewModel.loadHomeContent()
         
         #expect(viewModel.isLoading == false)
@@ -41,7 +40,6 @@ struct HomeViewModelTests {
             quoteStorage: quoteStorage
         )
         
-        UserDefaults.standard.removeObject(forKey: "hasRequestedHealthAccess")
         await viewModel.loadHomeContent()
         
         #expect(viewModel.quoteOfTheDay == remoteQuote)
@@ -61,9 +59,43 @@ struct HomeViewModelTests {
         await viewModel.requestAuthorization()
         
         #expect(viewModel.isLoading == false)
-        #expect(viewModel.isHealthConnected)
+        #expect(viewModel.healthState == .content)
         #expect(viewModel.todaysSteps == 4_200)
         #expect(viewModel.recentHeartRate == 72)
+    }
+    
+    @Test func loadHomeContentLoadsHealthDataWhenAuthorizationWasAlreadyRequested() async {
+        let viewModel = HomeViewModel(
+            healthService: MockHealthService(
+                shouldRequestAuthorizationResult: .success(false),
+                stepsResult: .success(5_600),
+                heartRateResult: .success(68)
+            ),
+            quoteService: MockQuoteService(result: .success([])),
+            quoteStorage: MockQuoteStorage()
+        )
+        
+        await viewModel.loadHomeContent()
+        
+        #expect(viewModel.healthState == .content)
+        #expect(viewModel.todaysSteps == 5_600)
+        #expect(viewModel.recentHeartRate == 68)
+    }
+    
+    @Test func loadHomeContentShowsUnavailableStateWhenHealthDataCannotBeRead() async {
+        let viewModel = HomeViewModel(
+            healthService: MockHealthService(
+                shouldRequestAuthorizationResult: .success(false),
+                stepsResult: .success(nil),
+                heartRateResult: .success(nil)
+            ),
+            quoteService: MockQuoteService(result: .success([])),
+            quoteStorage: MockQuoteStorage()
+        )
+        
+        await viewModel.loadHomeContent()
+        
+        #expect(viewModel.healthState == .unavailable)
     }
     
     @Test func requestAuthorizationShowsErrorWhenAuthorizationFails() async {
@@ -75,7 +107,7 @@ struct HomeViewModelTests {
         
         await viewModel.requestAuthorization()
         
-        #expect(viewModel.isHealthConnected == false)
+        #expect(viewModel.healthState == .unavailable)
         #expect(viewModel.errorMessage == "Test error")
     }
 }

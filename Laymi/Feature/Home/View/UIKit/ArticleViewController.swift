@@ -27,15 +27,15 @@ final class ArticleViewController: UIViewController {
         let hostingController = UIHostingController(rootView: articleView)
         addChild(hostingController)
         view.addSubview(hostingController.view)
-        didMove(toParent: self)
         
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            hostingController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
-            hostingController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        hostingController.didMove(toParent: self)
     }
-    
 }

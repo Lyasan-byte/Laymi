@@ -27,8 +27,7 @@ struct ProfileView: View {
     
     var body: some View {
         ZStack {
-            Color(.secondarySystemBackground).ignoresSafeArea()
-            BackgroundCircle(color: .pinkGrad)
+            background
             VStack {
                 photoButton
                 email
@@ -41,7 +40,6 @@ struct ProfileView: View {
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden, for: .tabBar)
         .task {
             await profileViewModel.configure(with: user)
         }
@@ -83,6 +81,11 @@ struct ProfileView: View {
                 .presentationDetents([.height(220)])
             }
         }
+    }
+    
+    @ViewBuilder private var background: some View {
+        Color(.secondarySystemBackground).ignoresSafeArea()
+        BackgroundCircle(color: .pinkGrad)
     }
     
     private var photoButton: some View {

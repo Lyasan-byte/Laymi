@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
 struct HomeView: View {
     private let user: AuthUser
@@ -14,7 +15,6 @@ struct HomeView: View {
     @Bindable private var profileViewModel: ProfileViewModel
     @Bindable private var homeViewModel: HomeViewModel
     
-    @State private var isAnimated = false
     @State private var sheet: ArticleSheet?
     
     init(
@@ -60,7 +60,7 @@ struct HomeView: View {
     
     @ViewBuilder private var background: some View {
         Color(.secondarySystemBackground).ignoresSafeArea()
-        DynamicGradientHeaderLayout(isAnimated: $isAnimated, colors: Color.colorsForQuotesGradientBackground)
+        DynamicGradientHeaderLayout(colors: Color.colorsForQuotesGradientBackground)
     }
     
     private var content: some View {
@@ -105,18 +105,44 @@ struct HomeView: View {
         .padding(.top)
     }
     
-    private var healthBlock: some View {
-        Group {
-            if homeViewModel.isHealthConnected {
+    @ViewBuilder private var healthBlock: some View {
+        switch homeViewModel.healthState {
+        case .needsAuthorization:
+            cardTitle("Get More From Health")
+                .padding(.top)
+            healthRequestButton
+        case .content:
+            Group {
                 cardTitle("Today’s Body Check")
                     .padding(.top)
                 healthCards
-            } else {
-                cardTitle("Get More From Health")
-                    .padding(.top)
-                healthRequestButton
             }
+        case .unavailable:
+            cardTitle("Health Data")
+                .padding(.top)
+            healthUnavailableCard
         }
+    }
+    
+    private var healthUnavailableCard: some View {
+        BackgroundLayer(height: 120)
+            .overlay {
+                VStack(spacing: 10) {
+                    Button("Open Settings") {
+                        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                        UIApplication.shared.open(url)
+                    }
+                    .buttonStyle(.glassProminent)
+                    .tint(.green)
+                    
+                    Text("To review access, open Health in Settings, choose Data Access & Devices, then select Laymi.")
+                        .font(.caption)
+                        .foregroundStyle(Color(.secondaryLabel))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                }
+            }
+            .padding(.top)
     }
     
     private var healthCards: some View {

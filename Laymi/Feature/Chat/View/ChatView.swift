@@ -23,7 +23,6 @@ struct ChatView: View {
                 header
                 quickPrompts
                 messages
-                //inputBar
             }
             .padding()
             .padding(.top, 20)
@@ -44,26 +43,37 @@ struct ChatView: View {
     }
     
     private var quickPrompts: some View {
-        FlowLayout(spacing: 8) {
-            ForEach(chatViewModel.quickPrompts, id: \.self) { prompt in
-                Button {
-                    chatViewModel.sendQuickPrompt(prompt)
-                } label: {
-                    Text(prompt)
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.brightPurple)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 9)
-                        .background {
-                            Capsule()
-                                .fill(Color(.tertiarySystemBackground))
-                        }
-                }
-                .buttonStyle(.plain)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                quickPromptButton(chatViewModel.quickPrompts[0])
+                quickPromptButton(chatViewModel.quickPrompts[1])
+                quickPromptButton(chatViewModel.quickPrompts[2])
+            }
+            
+            HStack(spacing: 8) {
+                quickPromptButton(chatViewModel.quickPrompts[3])
+                quickPromptButton(chatViewModel.quickPrompts[4])
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private func quickPromptButton(_ prompt: String) -> some View {
+        Button {
+            chatViewModel.sendQuickPrompt(prompt)
+        } label: {
+            Text(prompt)
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundStyle(.brightPurple)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 9)
+                .background {
+                    Capsule()
+                        .fill(Color(.tertiarySystemBackground))
+                }
+        }
+        .buttonStyle(.plain)
     }
     
     private var messages: some View {

@@ -29,6 +29,7 @@ struct JournalEntryDetailsView: View {
         }
         .navigationTitle("Entry")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 deleteButton

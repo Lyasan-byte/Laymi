@@ -11,20 +11,37 @@ import HealthKit
 final class HealthKitService: HealthService {
     private let healthStore = HKHealthStore()
     
+    func shouldRequestAuthorization() async throws -> Bool {
+        guard HKHealthStore.isHealthDataAvailable() else {
+            throw HealthKitError.healthDataUnavailable
+        }
+        
+        let status = try await healthStore.statusForAuthorizationRequest(
+            toShare: [],
+            read: readTypes
+        )
+        
+        switch status {
+        case .shouldRequest:
+            return true
+        case .unnecessary:
+            return false
+        case .unknown:
+            return true
+        default:
+            return true
+        }
+    }
+    
     func requestAuthorization() async throws {
         guard HKHealthStore.isHealthDataAvailable() else {
             throw HealthKitError.healthDataUnavailable
         }
         
-        let read: Set<HKSampleType> = [
-            HKQuantityType(.stepCount),
-            HKQuantityType(.heartRate)
-        ]
-        
-        try await healthStore.requestAuthorization(toShare: [], read: read)
+        try await healthStore.requestAuthorization(toShare: [], read: readTypes)
     }
     
-    func fetchTodayStepCount() async throws -> Double {
+    func fetchTodayStepCount() async throws -> Double? {
         let descriptor = fetchDescriptorForQuantityType(
             .stepCount,
             predicate: predicateForToday(),
@@ -32,7 +49,7 @@ final class HealthKitService: HealthService {
         )
         
         let result = try await descriptor.result(for: healthStore)
-        return result?.sumQuantity()?.doubleValue(for: .count()) ?? 0
+        return result?.sumQuantity()?.doubleValue(for: .count())
     }
     
     func fethcTodayHeartRate() async throws -> Double? {
@@ -64,6 +81,13 @@ final class HealthKitService: HealthService {
         let now = Date()
         let startOfDay = Calendar.current.startOfDay(for: now)
         return HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+    }
+    
+    private var readTypes: Set<HKObjectType> {
+        [
+            HKQuantityType(.stepCount),
+            HKQuantityType(.heartRate)
+        ]
     }
 }
 

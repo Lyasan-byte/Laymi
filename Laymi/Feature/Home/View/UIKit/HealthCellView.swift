@@ -47,7 +47,6 @@ final class HealthCellView: UIView {
             label.font = font
         }
         label.textAlignment = .left
-        label.textColor = .label
         
         return label
     }()
@@ -82,9 +81,11 @@ final class HealthCellView: UIView {
         
         if let value {
             dataLabel.text = value.formatted(.number.precision(.fractionLength(0)))
+            dataLabel.textColor = .label
             unitLabel.isHidden = false
         } else {
             dataLabel.text = "No Data"
+            dataLabel.textColor = .secondaryLabel
             unitLabel.isHidden = true
         }
     }

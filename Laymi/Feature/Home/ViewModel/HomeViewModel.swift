@@ -14,13 +14,11 @@ final class HomeViewModel {
     private let quoteService: QuoteService
     private let quoteStorage: QuoteStorage
     
-    private let hasRequestedHealthAccessKey = "hasRequestedHealthAccess"
-    
     var isLoading = true
-    var isHealthConnected = false
+    var healthState: HealthViewState = .needsAuthorization
     var quoteOfTheDay: Quote?
-    var todaysSteps: Double = 0
-    var recentHeartRate: Double? = 0
+    var todaysSteps: Double?
+    var recentHeartRate: Double?
     var errorMessage: String?
     
     private let quoteURL = AppConfiguration.quoteOfTheDayURL
@@ -39,7 +37,7 @@ final class HomeViewModel {
         isLoading = true
         
         async let quoteTask: Void = fetchQuoteOfTheDay()
-        async let healthTask: Void = loadHealthDataIfNeeded()
+        async let healthTask: Void = loadHealthDataIfAvailable()
         
         await quoteTask
         await healthTask
@@ -65,13 +63,12 @@ final class HomeViewModel {
     
     func requestAuthorization() async {
         isLoading = true
-        UserDefaults.standard.set(true, forKey: hasRequestedHealthAccessKey)
         
         do {
             try await healthService.requestAuthorization()
             await fetchHealthData()
         } catch {
-            isHealthConnected = false
+            healthState = .unavailable
             errorMessage = error.localizedDescription
         }
         
@@ -82,13 +79,18 @@ final class HomeViewModel {
         errorMessage = nil
     }
     
-    private func loadHealthDataIfNeeded() async {
-        guard UserDefaults.standard.bool(forKey: hasRequestedHealthAccessKey) else {
-            isHealthConnected = false
-            return
+    private func loadHealthDataIfAvailable() async {
+        do {
+            let shouldRequestAuthorization = try await healthService.shouldRequestAuthorization()
+            guard !shouldRequestAuthorization else {
+                healthState = .needsAuthorization
+                return
+            }
+            
+            await fetchHealthData()
+        } catch {
+            healthState = .unavailable
         }
-        
-        await fetchHealthData()
     }
     
     private func fetchHealthData() async {
@@ -97,11 +99,17 @@ final class HomeViewModel {
             async let heartRateTask = healthService.fethcTodayHeartRate()
             
             let (steps, heartRate) = try await (stepsTask, heartRateTask)
-            isHealthConnected = true
             self.todaysSteps = steps
             self.recentHeartRate = heartRate
+            healthState = steps == nil && heartRate == nil ? .unavailable : .content
         } catch {
-            isHealthConnected = false
+            healthState = .unavailable
         }
     }
+}
+
+enum HealthViewState {
+    case needsAuthorization
+    case content
+    case unavailable
 }

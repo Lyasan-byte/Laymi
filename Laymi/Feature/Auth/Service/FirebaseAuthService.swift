@@ -26,8 +26,7 @@ final class FirebaseAuthService: AuthService {
         changeRequest.displayName = name
         try await changeRequest.commitChanges()
         
-        let user = AuthUser(user: result.user, name: name)
-        return user
+        return AuthUser(user: result.user, name: name)
     }
     
     func signInWithGoogle() async throws -> AuthUser {

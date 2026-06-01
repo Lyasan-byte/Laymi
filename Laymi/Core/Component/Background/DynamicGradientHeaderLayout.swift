@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DynamicGradientHeaderLayout: View {
-    @Binding var isAnimated: Bool
+    @State private var isAnimated = false
     var colors: [Color]
     
     var body: some View {
@@ -21,10 +21,11 @@ struct DynamicGradientHeaderLayout: View {
                         isAnimated = true
                     }
                 }
+                .onDisappear { isAnimated = false }
                 .ignoresSafeArea()
     }
 }
 
 #Preview {
-    DynamicGradientHeaderLayout(isAnimated: .constant(true), colors: [.orange, .purple])
+    DynamicGradientHeaderLayout(colors: [.orange, .purple])
 }

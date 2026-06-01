@@ -19,7 +19,7 @@ struct JournalEntry: Identifiable, Equatable, Sendable {
     }
     
     var preview: String {
-        return text.trimmed.isEmpty ? "No text yet" : String(text.trimmed.prefix(90))
+        return text.trimmed.isEmpty ? "No text yet" : String(text.trimmed.prefix(90)) + "..."
     }
     
     init(

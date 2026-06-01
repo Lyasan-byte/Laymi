@@ -46,10 +46,12 @@ struct RootView: View {
                     profileViewModel: ProfileViewModel(
                         authService: authService,
                         profileStorage: profileStorage
-                    ), homeViewModel: HomeViewModel(healthService: HealthKitService(), quoteService: RemoteQuoteService(), quoteStorage: quoteStorage),
+                    ),
+                    homeViewModel: HomeViewModel(healthService: HealthKitService(), quoteService: RemoteQuoteService(), quoteStorage: quoteStorage),
                     exerciseViewModel: ExerciseViewModel(),
                     quotesViewModel: QuotesViewModel(
-                        quoteService: RemoteQuoteService(), quoteStorage: quoteStorage
+                        quoteService: RemoteQuoteService(),
+                        quoteStorage: quoteStorage
                     ), chatViewModel: ChatViewModel(chatService: GeminiChatService())
                 ) {
                     rootViewModel.showAuthFlow()

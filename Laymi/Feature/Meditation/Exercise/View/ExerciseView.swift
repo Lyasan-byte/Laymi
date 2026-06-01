@@ -33,6 +33,9 @@ struct ExerciseView: View {
                 alignment: .center
             )
         }
+        .onDisappear {
+            exerciseViewModel.pause()
+        }
     }
     
     private var exerciseCard: some View {

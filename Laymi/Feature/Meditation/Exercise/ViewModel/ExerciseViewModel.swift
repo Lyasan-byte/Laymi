@@ -77,7 +77,7 @@ final class ExerciseViewModel {
         }
     }
     
-    private func pause() {
+    func pause() {
         timerTask?.cancel()
         timerTask = nil
         isRunning = false
