@@ -1,4 +1,4 @@
-# <img src="screenshots/app-icon.png" width="36" height="36" alt="Laymi app icon"> Laymi
+# <img src="screenshots/app-icon.png" width="42" height="42" alt="Laymi app icon"> Laymi
 
 Laymi is an iOS mental wellness companion designed to make everyday self-care feel calm, approachable, and personal. It brings together mindful breathing, reflective journaling, gentle health insights, curated quotes, and a supportive AI-powered chat in one focused experience.
 
