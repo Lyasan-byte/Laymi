@@ -35,8 +35,8 @@ The home screen brings together a daily reflection and simple wellbeing signals.
 Laymi includes a streaming AI chat powered by Gemini through Firebase AI. Responses appear progressively, so the conversation feels immediate rather than static. The assistant is guided by a wellbeing-focused system prompt with clear safety boundaries for crisis situations, self-harm, harm to others, and prompt injection attempts.
 
 <p align="center">
+  <img src="screenshots/chat1.png" width="260" />
   <img src="screenshots/chat2.png" width="260" />
-  <img src="screenshots/chat3.png" width="260" />
 </p>
 <div align="center">
   <video
