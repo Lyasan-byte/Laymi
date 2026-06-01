@@ -36,6 +36,9 @@ Laymi includes a streaming AI chat powered by Gemini through Firebase AI. Respon
 
 <p align="center">
   <img src="screenshots/chat.mov" width="260" />
+  <img width="1206" height="2622" alt="chat1" src="https://github.com/user-attachments/assets/e0fd4c7e-8cd7-4a22-a30c-663a2fb48743" />
+  <img width="1206" height="2622" alt="chat2" src="https://github.com/user-attachments/assets/dbb2e439-eaa6-4962-91a9-931adcbc0537" />
+
   
 </p>
 <div align="center">
@@ -45,6 +48,7 @@ Laymi includes a streaming AI chat powered by Gemini through Firebase AI. Respon
     controls>
   </video>
 </div>
+
 
 
 
