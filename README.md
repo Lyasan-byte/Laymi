@@ -1,3 +1,7 @@
+
+
+
+
 <h1>
   <img
     src="screenshots/app-icon.png"
@@ -37,6 +41,8 @@ Laymi includes a streaming AI chat powered by Gemini through Firebase AI. Respon
 <p align="center">
   <img src="screenshots/chat.mov" width="260" />
 </p>
+
+https://github.com/user-attachments/assets/05a14312-838a-4466-b825-519f21bb022e
 
 ### Mindful Breathing
 
