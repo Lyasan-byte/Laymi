@@ -80,7 +80,9 @@ The journal provides thoughtful prompts for anxiety, loneliness, gratitude, self
 Users can sign in, maintain a personal profile, and update details such as name, birthday, gender, and profile image.
 
 <p align="center">
+  <img src="screenshots/profile-calendar.png" width="260" />
   <img src="screenshots/profile.png" width="260" />
+  <img src="screenshots/profile-photo.png" width="260" />
 </p>
 
 ### Dark Mode
