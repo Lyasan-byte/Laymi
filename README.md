@@ -50,13 +50,9 @@ Laymi includes a streaming AI chat powered by Gemini through Firebase AI. Respon
 
 The breathing exercise offers a three-minute guided practice with visual rhythm, phase instructions, a timer, pause and reset controls, and a completion state.
 
-<p align="center">
-  <img src="screenshots/chat1.png" width="260" />
-  <img src="screenshots/chat2.png" width="260" />
-</p>
 <div align="center">
   <video
-    src="screenshots/breathing.mov"
+    src="https://github.com/user-attachments/assets/c7b1a7ca-6964-48fd-949e-8a8c136f5c63"
     width="260"
     controls>
   </video>
@@ -66,9 +62,13 @@ The breathing exercise offers a three-minute guided practice with visual rhythm,
 
 Users can browse a paged collection of supportive quotes. Quotes are cached locally with SwiftData to reduce unnecessary network requests and provide a smoother experience.
 
-<p align="center">
-  <img src="screenshots/quotes.mov" width="260" />
-</p>
+<div align="center">
+  <video
+    src="https://github.com/user-attachments/assets/8bdc56c5-324c-43fb-9b54-734892690394"
+    width="260"
+    controls>
+  </video>
+</div>
 
 ### Guided Journal
 
